@@ -4,51 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nicoc.productos.AlCuadradoView"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
-
-    <TextView
-        android:id="@+id/lblResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esperando .."
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="37dp"
-        app:layout_constraintTop_toBottomOf="@+id/btnCalcular"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/btnCalcular"
-        android:layout_marginLeft="25dp" />
-
-    <Button
-        android:onClick="calcular"
-        android:id="@+id/btnCalcular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calcular"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintRight_toRightOf="@+id/txtValor"
-        android:layout_marginTop="163dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="12dp"
-        />
-
-    <EditText
-        android:id="@+id/txtValor"
-        android:hint="Introduce un valor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="27dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp" />
+    tools:context="com.example.nicoc.productos.MainActivity">
 
 </android.support.constraint.ConstraintLayout>

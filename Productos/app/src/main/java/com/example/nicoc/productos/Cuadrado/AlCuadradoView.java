@@ -1,10 +1,12 @@
-package com.example.nicoc.productos;
+package com.example.nicoc.productos.Cuadrado;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.nicoc.productos.R;
 
 public class AlCuadradoView extends AppCompatActivity implements AlCuadrado.View{
 
@@ -18,7 +20,7 @@ public class AlCuadradoView extends AppCompatActivity implements AlCuadrado.View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_al_cuadrado);
         lblResultado = (TextView)findViewById(R.id.lblResultado);
         txtValor= (EditText) findViewById(R.id.txtValor);
         presenter = new AlCuadradoPresenter(this);

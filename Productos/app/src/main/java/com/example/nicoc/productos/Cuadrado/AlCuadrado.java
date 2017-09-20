@@ -1,4 +1,4 @@
-package com.example.nicoc.productos;
+package com.example.nicoc.productos.Cuadrado;
 
 /**
  * Created by nicoc on 17/09/17.
