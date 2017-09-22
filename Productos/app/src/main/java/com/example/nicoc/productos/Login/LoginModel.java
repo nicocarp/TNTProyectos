@@ -1,28 +1,32 @@
 package com.example.nicoc.productos.Login;
 
+import com.example.nicoc.productos.App;
+import com.example.nicoc.productos.Database.DaoSession;
+import com.example.nicoc.productos.Database.ManagerDB;
+import com.example.nicoc.productos.Database.Usuario;
+import com.example.nicoc.productos.Database.UsuarioDao;
+
+import java.util.List;
+
+
 /**
  * Created by nicoc on 19/09/17.
  */
 
-public class LoginModel implements LoginInterface.Model{
-    private LoginInterface.Presenter presenter;
+public class LoginModel implements ILogin.Model{
+    private ILogin.Presenter presenter;
 
-    public LoginModel(LoginInterface.Presenter presenter) {
-        this.presenter = presenter;
+    public LoginModel(ILogin.Presenter presenter) {
+        this.presenter = presenter
     }
 
     @Override
     public void validarUsuario(String username, String password) {
         String error = "";
-        if (username.equals("") || password.equals(""))
-            error = "Campos vacios";
-        //  aca debemos buscar  datos en bd o en algun lugar.
-        if (!username.equals("nicoc") || !password.equals("1234"))
-            error = "Datos ingresados incorrectos";
-        if (error.equals(""))
-            presenter.usuarioValido();
+        long id_user = ManagerDB.validarUsuario(username, password);
+        if (id_user == -1)
+            presenter.mostrarError("Datos ingresados incorrectos");
         else
-            presenter.mostrarError(error);
-
+            presenter.usuarioValido();
     }
 }

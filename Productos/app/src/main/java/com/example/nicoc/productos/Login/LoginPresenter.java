@@ -4,12 +4,12 @@ package com.example.nicoc.productos.Login;
  * Created by nicoc on 19/09/17.
  */
 
-public class LoginPresenter implements LoginInterface.Presenter {
+public class LoginPresenter implements ILogin.Presenter {
 
-    private LoginInterface.View view;
-    private LoginInterface.Model model;
+    private ILogin.View view;
+    private ILogin.Model model;
 
-    public LoginPresenter(LoginInterface.View view) {
+    public LoginPresenter(ILogin.View view) {
         this.view = view;
         this.model = new LoginModel(this);
     }

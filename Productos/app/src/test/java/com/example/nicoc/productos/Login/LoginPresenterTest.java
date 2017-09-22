@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -19,10 +18,10 @@ public class LoginPresenterTest {
     private LoginPresenter presenter;
 
     @Mock
-    private LoginInterface.View view;
+    private ILogin.View view;
 
     @Mock
-    private LoginInterface.Model model;
+    private ILogin.Model model;
 
     @Before
     public void setUp(){
