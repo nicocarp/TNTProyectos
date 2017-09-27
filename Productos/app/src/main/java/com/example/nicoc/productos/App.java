@@ -1,6 +1,7 @@
 package com.example.nicoc.productos;
 
 import android.app.Application;
+import android.content.Context;
 import android.widget.Toast;
 
 import com.example.nicoc.productos.Database.DaoMaster;
@@ -23,6 +24,10 @@ public class App extends Application {
             //Database db = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
             //this.daoSession = new DaoMaster(db).newSession();
             this.managerDB = new ManagerDB(this, "notes-db");
+            //this.deleteDatabase("notes-db");
+            //this.managerDB.generar_usuario();
+            //this.managerDB.generar_productos_ventas();
+
 
         } catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();

@@ -17,13 +17,13 @@ public class LoginModel implements ILogin.Model{
     private ILogin.Presenter presenter;
 
     public LoginModel(ILogin.Presenter presenter) {
-        this.presenter = presenter
+        this.presenter = presenter;
     }
 
     @Override
     public void validarUsuario(String username, String password) {
         String error = "";
-        long id_user = ManagerDB.validarUsuario(username, password);
+        long id_user = ManagerDB.getManagerDBInstance().validarUsuario(username, password);
         if (id_user == -1)
             presenter.mostrarError("Datos ingresados incorrectos");
         else

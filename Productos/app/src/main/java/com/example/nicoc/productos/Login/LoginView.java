@@ -40,6 +40,7 @@ public class LoginView extends AppCompatActivity implements ILogin.View {
 
     @Override
     public void usuarioValido() {
+
         startActivity(new Intent(LoginView.this, MainActivity.class));
     }
 
