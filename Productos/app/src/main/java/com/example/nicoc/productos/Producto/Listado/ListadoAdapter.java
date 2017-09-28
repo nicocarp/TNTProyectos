@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import com.example.nicoc.productos.Database.Producto;
 import com.example.nicoc.productos.R;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,16 +24,17 @@ import java.util.List;
  * Created by nicoc on 27/09/17.
  */
 
-public class ListadoAdapter extends BaseAdapter {
+public class ListadoAdapter extends BaseAdapter  {
 
     private Activity activity;
-    private LayoutInflater inflater;
     private  List<Producto> items = Collections.emptyList();
+    private  List<Producto> items_all = Collections.emptyList();
+
 
     public ListadoAdapter(Activity activity, List<Producto> items){
-        this.inflater = LayoutInflater.from(activity);
         this.activity = activity;
         this.items = items;
+        this.items_all = items;
     }
 
     @Override
@@ -69,9 +73,45 @@ public class ListadoAdapter extends BaseAdapter {
         return v;
     }
 
+    /**
+     * Setea los items que se muestran y los items_all del adaptador
+     * @param items Listado de objetos Producto
+     */
+    public void setData(List<Producto> items){
+        this.items.clear();
+        this.items = items;
+        this.items_all = items;
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Setea un nuevo listado de items que se muestran, items_all permanece igual. Usado despues de filtros.
+     * @param items Listados de objetos Producto
+     */
     public void refreshData(List<Producto> items) {
         this.items.clear();
         this.items = items;
         notifyDataSetChanged();
     }
+
+    /* Metodo personalizado para filtrar por nombre y codigo */
+    public void filtrado(String codigo, String nombre){
+
+        String filtro_nombre = nombre.toString().toLowerCase();
+        String filtro_codigo = codigo.toString().toLowerCase();
+
+        List<Producto> filtrado = new ArrayList<Producto>();
+
+        for (Producto producto : this.items){
+
+            if (producto.getNombre().toLowerCase().contains(filtro_nombre) &&
+                    producto.getCodigo().toLowerCase().contains(filtro_codigo))
+                filtrado.add(producto);
+        }
+
+        this.refreshData(filtrado);
+    }
+
+
+
 }

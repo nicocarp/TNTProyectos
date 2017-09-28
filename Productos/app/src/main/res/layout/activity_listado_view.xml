@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Codigo"
+                android:hint="Filtro Codigo"
                 android:inputType="textPersonName"
                 android:text="" />
 
@@ -36,9 +36,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Nombre"
+                android:hint="Filtro Nombre"
                 android:inputType="textPersonName"
                 android:text="" />
+
+            <Button
+                android:id="@+id/btnFiltrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="B"
+                android:onClick="filtrar"
+                />
         </LinearLayout>
 
         <LinearLayout
