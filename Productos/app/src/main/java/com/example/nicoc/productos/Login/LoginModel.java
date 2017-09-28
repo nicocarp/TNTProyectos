@@ -1,12 +1,6 @@
 package com.example.nicoc.productos.Login;
 
-import com.example.nicoc.productos.App;
-import com.example.nicoc.productos.Database.DaoSession;
 import com.example.nicoc.productos.Database.ManagerDB;
-import com.example.nicoc.productos.Database.Usuario;
-import com.example.nicoc.productos.Database.UsuarioDao;
-
-import java.util.List;
 
 
 /**
@@ -23,10 +17,10 @@ public class LoginModel implements ILogin.Model{
     @Override
     public void validarUsuario(String username, String password) {
         String error = "";
-        long id_user = ManagerDB.getManagerDBInstance().validarUsuario(username, password);
+        Long id_user = ManagerDB.getInstance().validarUsuario(username, password);
         if (id_user == -1)
             presenter.mostrarError("Datos ingresados incorrectos");
         else
-            presenter.usuarioValido();
+            presenter.usuarioValido(id_user);
     }
 }

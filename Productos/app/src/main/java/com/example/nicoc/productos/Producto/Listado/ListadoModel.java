@@ -16,7 +16,7 @@ public class ListadoModel implements IListado.Model {
 
     public ListadoModel(IListado.Presenter presenter) {
         this.presenter = presenter;
-        this.manager = ManagerDB.getManagerDBInstance();
+        this.manager = ManagerDB.getInstance();
     }
 
 
@@ -24,7 +24,7 @@ public class ListadoModel implements IListado.Model {
     public void getProductos() {
         List<Producto> productos = this.manager.getProductos();
         if  (productos.size() > 0)
-            this.presenter.listadoProductos(productos);
+            this.presenter.setItems(productos);
         else
             this.presenter.mostrarError("Sin productos");
     }

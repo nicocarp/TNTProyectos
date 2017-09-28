@@ -20,8 +20,8 @@ public class LoginPresenter implements ILogin.Presenter {
     }
 
     @Override
-    public void usuarioValido() {
-        this.view.usuarioValido();
+    public void usuarioValido(Long id_usuario) {
+        this.view.usuarioValido(id_usuario);
     }
 
     @Override

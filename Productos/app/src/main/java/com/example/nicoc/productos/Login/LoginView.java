@@ -39,8 +39,7 @@ public class LoginView extends AppCompatActivity implements ILogin.View {
     }
 
     @Override
-    public void usuarioValido() {
-
+    public void usuarioValido(Long id_usuario) {
         startActivity(new Intent(LoginView.this, MainActivity.class));
     }
 
@@ -49,10 +48,6 @@ public class LoginView extends AppCompatActivity implements ILogin.View {
         Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public ManagerDB getManagerDB() {
-        return ((App)getApplication()).getManagerDB();
-    }
 
 
 }

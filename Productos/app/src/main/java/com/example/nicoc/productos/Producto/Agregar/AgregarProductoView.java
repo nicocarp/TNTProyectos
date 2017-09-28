@@ -58,9 +58,9 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
      * @param v
      */
     public void eventoAgregarProducto(View v){
+        this.validator.clear();
         if (!this.validator.validate())
             return;
-        this.validator.clear();
         agregarProducto();
     }
 

@@ -19,18 +19,13 @@ public class ListadoPresenter implements IListado.Presenter{
     }
 
     @Override
-    public void getProductos() {
+    public void getItems() {
         this.model.getProductos();
     }
 
     @Override
-    public void listadoProductos(List<Producto> productos) {
-        List<String> nombres =  new ArrayList<String>();;
-        for (Producto p : productos){
-            nombres.add(p.getNombre());
-        }
-        this.view.setListado(nombres);
-
+    public void setItems(List<Producto> items){
+        this.view.setItems(items);
     }
 
     @Override

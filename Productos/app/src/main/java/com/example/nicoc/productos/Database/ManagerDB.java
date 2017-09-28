@@ -13,21 +13,26 @@ import java.util.List;
 
 public class ManagerDB extends DaoMaster.OpenHelper {
 
-    private static DaoMaster.DevOpenHelper helper;
     private static Database db;
     private static DaoSession daoSession;
     private static ManagerDB instance = null;
 
+
     public ManagerDB(Context context, String name){
         super(context, name);
+
         db = this.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
         instance = this;
+
         if (daoSession.getProductoDao().queryBuilder().list().isEmpty())
             this.generar_usuario();
     }
 
-    public static ManagerDB getManagerDBInstance(){
+    public static ManagerDB getInstance(){
+
+        if (instance == null)
+            throw new RuntimeException("Sin conexion a con bd");
         return instance;
     }
 

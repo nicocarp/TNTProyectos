@@ -11,16 +11,14 @@ import java.util.List;
 public interface IListado {
 
     interface View {
-        public void getProductos();
-        public void setListado(List<String> listado);
-
-        public void sinProductos();
+        public void getItems();
+        public void setItems(List<Producto> items);
         public void mostrarError(String error);
     }
     interface Presenter{
-        public void getProductos();
-        public void listadoProductos(List<Producto> productos);
+        public void getItems();
         public void mostrarError(String error);
+        public void setItems(List<Producto> items);
     }
     interface Model {
         public void getProductos();

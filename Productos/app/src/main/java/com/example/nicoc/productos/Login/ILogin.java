@@ -10,14 +10,13 @@ public interface ILogin {
 
     interface View {
         public void validarUsuario();
-        public void usuarioValido();
+        public void usuarioValido(Long id_usuario);
         public void mostrarError(String error);
-        public ManagerDB getManagerDB();
     }
 
     interface Presenter {
         public void validarUsuario(String username, String password);
-        public void usuarioValido();
+        public void usuarioValido(Long id_usuario);
         public void mostrarError(String error);
     }
 

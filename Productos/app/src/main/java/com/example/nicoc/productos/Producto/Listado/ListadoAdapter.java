@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,8 +13,8 @@ import android.widget.TextView;
 import com.example.nicoc.productos.Database.Producto;
 import com.example.nicoc.productos.R;
 
-import org.w3c.dom.Text;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,9 +24,11 @@ import java.util.List;
 public class ListadoAdapter extends BaseAdapter {
 
     private Activity activity;
-    private List<Producto> items;
+    private LayoutInflater inflater;
+    private  List<Producto> items = Collections.emptyList();
 
     public ListadoAdapter(Activity activity, List<Producto> items){
+        this.inflater = LayoutInflater.from(activity);
         this.activity = activity;
         this.items = items;
     }
@@ -66,5 +67,11 @@ public class ListadoAdapter extends BaseAdapter {
         view_txt_nombre.setText(p.getNombre());
 
         return v;
+    }
+
+    public void refreshData(List<Producto> items) {
+        this.items.clear();
+        this.items = items;
+        notifyDataSetChanged();
     }
 }

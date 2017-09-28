@@ -14,7 +14,7 @@ public class AgregarProductoModel implements IProducto.Model{
 
     public AgregarProductoModel(IProducto.Presenter presenter) {
         this.presenter = presenter;
-        this.manager = ManagerDB.getManagerDBInstance();
+        this.manager = ManagerDB.getInstance();
     }
 
     @Override
