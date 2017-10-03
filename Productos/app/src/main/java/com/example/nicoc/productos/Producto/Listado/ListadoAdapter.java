@@ -33,8 +33,9 @@ public class ListadoAdapter extends BaseAdapter  {
 
     public ListadoAdapter(Activity activity, List<Producto> items){
         this.activity = activity;
-        this.items = items;
         this.items_all = items;
+        this.items = items;
+
     }
 
     @Override
@@ -79,8 +80,10 @@ public class ListadoAdapter extends BaseAdapter  {
      */
     public void setData(List<Producto> items){
         this.items.clear();
-        this.items = items;
+        this.items_all.clear();
+
         this.items_all = items;
+        this.items = items;
         notifyDataSetChanged();
     }
 
@@ -88,13 +91,16 @@ public class ListadoAdapter extends BaseAdapter  {
      * Setea un nuevo listado de items que se muestran, items_all permanece igual. Usado despues de filtros.
      * @param items Listados de objetos Producto
      */
-    public void refreshData(List<Producto> items) {
-        this.items.clear();
+    private void refreshData(List<Producto> items) {
         this.items = items;
         notifyDataSetChanged();
     }
 
-    /* Metodo personalizado para filtrar por nombre y codigo */
+    /**
+     * Metodo personalizado para filtrar listado de productos por nombre y codigo
+     * @param codigo String (convertido a minuscula para buscar)
+     * @param nombre String (convertido a minuscula para buscar)
+     */
     public void filtrado(String codigo, String nombre){
 
         String filtro_nombre = nombre.toString().toLowerCase();
@@ -102,8 +108,7 @@ public class ListadoAdapter extends BaseAdapter  {
 
         List<Producto> filtrado = new ArrayList<Producto>();
 
-        for (Producto producto : this.items){
-
+        for (Producto producto : this.items_all){
             if (producto.getNombre().toLowerCase().contains(filtro_nombre) &&
                     producto.getCodigo().toLowerCase().contains(filtro_codigo))
                 filtrado.add(producto);
