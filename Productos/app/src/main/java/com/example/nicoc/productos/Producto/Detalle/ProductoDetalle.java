@@ -38,7 +38,7 @@ public class ProductoDetalle extends AppCompatActivity {
         this.txtNombre.setText(producto.getNombre());
         this.txtDescripcion.setText(producto.getDescripcion());
         this.txtPrecio.setText(((Double)producto.getPrecio()).toString());
-        this.txtStock.setText(producto.getStock());
+        this.txtStock.setText(((Integer) producto.getStock()).toString());
         this.txtImagen.setText(producto.getImagen());
     }
 }
