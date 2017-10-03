@@ -98,7 +98,7 @@ public class ManagerDB extends DaoMaster.OpenHelper {
             producto.setCodigo("Un_codigo"+i);
             producto.setDescripcion("Una descripcion");
             producto.setImagen("Una_imagen");
-            producto.setPrecio((long) 20);
+            producto.setPrecio(Double.valueOf(20));
             producto.setStock(0);
 
             Long clave = productoDao.insert(producto);

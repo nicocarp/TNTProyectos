@@ -20,12 +20,13 @@ public class Producto implements Parcelable{
     @NotNull@Unique private String codigo;
     @NotNull private String nombre;
     @NotNull private String descripcion;
-    @NotNull private double precio;
-    @NotNull private int stock;
+    @NotNull private Double precio;
+    @NotNull private Integer stock;
     private String imagen;
-    @Generated(hash = 1754718403)
+    @Generated(hash = 732148805)
     public Producto(Long id, @NotNull String codigo, @NotNull String nombre,
-            @NotNull String descripcion, double precio, int stock, String imagen) {
+            @NotNull String descripcion, @NotNull Double precio,
+            @NotNull Integer stock, String imagen) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -83,19 +84,18 @@ public class Producto implements Parcelable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public double getPrecio() {
+    public Double getPrecio() {
         return this.precio;
     }
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-    public int getStock() {
+
+    public Integer getStock() {
         return this.stock;
     }
 
-    public void setStock(int stock) {
-        if ((this.stock - stock) < 0)
-            return; // LANZAR EXCEPCION
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
     public String getImagen() {
@@ -119,4 +119,5 @@ public class Producto implements Parcelable{
         parcel.writeInt(stock);
         parcel.writeString(imagen);
     }
+
 }

@@ -17,7 +17,7 @@ import org.greenrobot.greendao.DaoException;
 public class Venta {
     @Id(autoincrement=true) private Long id;
     @NotNull private Date fecha;
-    @NotNull private int cantidad;
+    @NotNull private Integer cantidad;
     @NotNull private Long monto_total;
 
     @NotNull private Long producto_id;
@@ -28,9 +28,9 @@ public class Venta {
     /** Used for active entity operations. */
     @Generated(hash = 1340327861)
     private transient VentaDao myDao;
-    @Generated(hash = 380515263)
-    public Venta(Long id, @NotNull Date fecha, int cantidad,
-            @NotNull Long monto_total, @NotNull Long producto_id) {
+    @Generated(hash = 585326660)
+    public Venta(Long id, @NotNull Date fecha, @NotNull Integer cantidad, @NotNull Long monto_total,
+            @NotNull Long producto_id) {
         this.id = id;
         this.fecha = fecha;
         this.cantidad = cantidad;
@@ -52,12 +52,14 @@ public class Venta {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    public int getCantidad() {
+    public Integer getCantidad() {
         return this.cantidad;
     }
-    public void setCantidad(int cantidad) {
+
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
+
     public Long getMonto_total() {
         return this.monto_total;
     }
@@ -136,6 +138,7 @@ public class Venta {
         }
         myDao.update(this);
     }
+
     /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 475728722)
     public void __setDaoSession(DaoSession daoSession) {

@@ -15,13 +15,13 @@ public interface IProducto {
     interface Presenter {
         public void mostrarError(String error);
         public void agregarProducto(String codigo, String nombre, String descripcion,
-                                    double precio, int stock, String imagen);
+                                    Double precio, Integer stock, String imagen);
         public void productoAgregado(Long id_producto);
     }
 
     interface Model {
         public void agregarProducto(String codigo, String nombre, String descripcion,
-                                    double precio, int stock, String imagen);
+                                    Double precio, Integer stock, String imagen);
 
     }
 }

@@ -47,7 +47,7 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
         validator.addValidation(this.txtNombre, RegexTemplate.NOT_EMPTY, "Requerido");
         validator.addValidation(this.txtNombre, "[a-zA-Z\\s]+", "Ingrese nombre");
         validator.addValidation(this.txtDescripcion, RegexTemplate.NOT_EMPTY, "Ingrese descripcion");
-        validator.addValidation(this.txtPrecio, Range.greaterThan(0), "Precio mayor a 0");
+        validator.addValidation(this.txtPrecio, Range.greaterThan(0.0f), "Precio mayor a 0");
         validator.addValidation(this.txtPrecio, RegexTemplate.NOT_EMPTY, "Precio requerido");
         validator.addValidation(this.txtStock, Range.greaterThan(-1), "Stock 0 o mayor");
     }
@@ -79,8 +79,8 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
         String nombre = this.txtNombre.getText().toString();
         String descripcion = this.txtDescripcion.getText().toString();
         String imagen = this.txtImagen.getText().toString();
-        double precio = Double.valueOf(this.txtPrecio.getText().toString());
-        int stock = Integer.valueOf(this.txtStock.getText().toString());
+        Double precio = Double.valueOf(this.txtPrecio.getText().toString());
+        Integer stock = Integer.valueOf(this.txtStock.getText().toString());
 
         this.presenter.agregarProducto(
                 codigo, nombre, descripcion, precio, stock, imagen

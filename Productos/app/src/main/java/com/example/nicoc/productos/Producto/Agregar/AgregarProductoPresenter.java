@@ -20,7 +20,7 @@ public class AgregarProductoPresenter implements IProducto.Presenter{
     }
 
     @Override
-    public void agregarProducto(String codigo, String nombre, String descripcion, double precio, int stock, String imagen) {
+    public void agregarProducto(String codigo, String nombre, String descripcion, Double precio, Integer stock, String imagen) {
         // aca deberiamos hacer validaciones de dependencias entre inputs
         this.model.agregarProducto(codigo, nombre, descripcion, precio, stock, imagen);
     }

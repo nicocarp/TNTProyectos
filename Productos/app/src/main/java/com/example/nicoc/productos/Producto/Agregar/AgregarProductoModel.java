@@ -18,7 +18,7 @@ public class AgregarProductoModel implements IProducto.Model{
     }
 
     @Override
-    public void agregarProducto(String codigo, String nombre, String descripcion, double precio, int stock, String imagen) {
+    public void agregarProducto(String codigo, String nombre, String descripcion, Double precio, Integer stock, String imagen) {
         Producto producto = new Producto();
         producto.setCodigo(codigo);
         producto.setNombre(nombre);
