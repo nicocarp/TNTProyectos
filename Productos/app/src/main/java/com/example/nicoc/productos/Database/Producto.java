@@ -1,5 +1,8 @@
 package com.example.nicoc.productos.Database;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
@@ -12,7 +15,7 @@ import java.text.DecimalFormat;
  * Created by nicoc on 23/09/17.
  */
 @Entity
-public class Producto {
+public class Producto implements Parcelable{
     @Id(autoincrement=true) private Long id;
     @NotNull@Unique private String codigo;
     @NotNull private String nombre;
@@ -34,6 +37,28 @@ public class Producto {
     @Generated(hash = 549390722)
     public Producto() {
     }
+
+    protected Producto(Parcel in) {
+        codigo = in.readString();
+        nombre = in.readString();
+        descripcion = in.readString();
+        precio = in.readDouble();
+        stock = in.readInt();
+        imagen = in.readString();
+    }
+
+    public static final Creator<Producto> CREATOR = new Creator<Producto>() {
+        @Override
+        public Producto createFromParcel(Parcel in) {
+            return new Producto(in);
+        }
+
+        @Override
+        public Producto[] newArray(int size) {
+            return new Producto[size];
+        }
+    };
+
     public Long getId() {
         return this.id;
     }
@@ -80,4 +105,18 @@ public class Producto {
         this.imagen = imagen;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(codigo);
+        parcel.writeString(nombre);
+        parcel.writeString(descripcion);
+        parcel.writeDouble(precio);
+        parcel.writeInt(stock);
+        parcel.writeString(imagen);
+    }
 }

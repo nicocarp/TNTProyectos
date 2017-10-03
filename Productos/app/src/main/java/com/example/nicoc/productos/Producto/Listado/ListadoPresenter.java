@@ -1,6 +1,10 @@
 package com.example.nicoc.productos.Producto.Listado;
 
+import android.content.Intent;
+
 import com.example.nicoc.productos.Database.Producto;
+import com.example.nicoc.productos.MainActivity;
+import com.example.nicoc.productos.Producto.Detalle.ProductoDetalle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,11 @@ public class ListadoPresenter implements IListado.Presenter{
     @Override
     public void setItems(List<Producto> items){
         this.view.setItems(items);
+    }
+
+    @Override
+    public void lanzarProductoDetalle(Producto producto) {
+        this.view.lanzarDetalleProducto(producto);
     }
 
     @Override

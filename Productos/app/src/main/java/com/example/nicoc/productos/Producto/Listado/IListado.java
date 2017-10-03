@@ -14,11 +14,13 @@ public interface IListado {
         public void getItems();
         public void setItems(List<Producto> items);
         public void mostrarError(String error);
+        public void lanzarDetalleProducto(Producto producto);
     }
     interface Presenter{
         public void getItems();
         public void mostrarError(String error);
         public void setItems(List<Producto> items);
+        public void lanzarProductoDetalle(Producto producto);
     }
     interface Model {
         public void getProductos();

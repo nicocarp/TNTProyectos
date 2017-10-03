@@ -29,7 +29,7 @@ public class ListadoAdapter extends BaseAdapter  {
     private Activity activity;
     private  List<Producto> items = Collections.emptyList();
     private  List<Producto> items_all = Collections.emptyList();
-
+    private ItemClickListener itemClickListener;
 
     public ListadoAdapter(Activity activity, List<Producto> items){
         this.activity = activity;
@@ -115,6 +115,14 @@ public class ListadoAdapter extends BaseAdapter  {
         }
 
         this.refreshData(filtrado);
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(Producto  producto, int position);
+    }
+    /* Probando metodo para detalle de producto */
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 
 
