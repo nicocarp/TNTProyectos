@@ -32,6 +32,9 @@ public class LoginView extends AppCompatActivity implements ILogin.View {
         ButterKnife.bind(this);
 
         this.presenter = new LoginPresenter(this);
+
+        txtPassword.setText("1234");
+        txtUsername.setText("nicoc");
     }
 
     @OnClick(R.id.btnLogin)

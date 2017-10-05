@@ -12,17 +12,28 @@ import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.example.nicoc.productos.R;
 import com.google.common.collect.Range;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class AgregarProductoView extends AppCompatActivity implements IProducto.View {
 
     private IProducto.Presenter presenter;
+
     private AwesomeValidation validator;
 
-    private EditText txtCodigo, txtNombre, txtDescripcion, txtPrecio, txtStock, txtImagen;
+    @BindView(R.id.txtCodigo) EditText txtCodigo;
+    @BindView(R.id.txtNombre) EditText txtNombre;
+    @BindView(R.id.txtDescripcion) EditText txtDescripcion;
+    @BindView(R.id.txtPrecio) EditText txtPrecio;
+    @BindView(R.id.txtStock) EditText txtStock;
+    @BindView(R.id.txtImagen) EditText txtImagen;
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_producto_view);
+
+        ButterKnife.bind(this);
 
         this.presenter = new AgregarProductoPresenter(this);
 
@@ -34,22 +45,14 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
 
     public void inicarView(){
 
-        // Iputs
-        this.txtCodigo = (EditText)findViewById(R.id.txtCodigo);
-        this.txtNombre = (EditText)findViewById(R.id.txtNombre);
-        this.txtDescripcion= (EditText)findViewById(R.id.txtDescripcion);
-        this.txtPrecio= (EditText)findViewById(R.id.txtPrecio);
-        this.txtStock= (EditText)findViewById(R.id.txtStock);
-        this.txtImagen = (EditText)findViewById(R.id.txtImagen);
-
         // Reglas de validacion
-        validator.addValidation(this.txtCodigo, "[a-zA-Z\\s]+", "Ingrese codigo valido");
-        validator.addValidation(this.txtNombre, RegexTemplate.NOT_EMPTY, "Requerido");
-        validator.addValidation(this.txtNombre, "[a-zA-Z\\s]+", "Ingrese nombre");
-        validator.addValidation(this.txtDescripcion, RegexTemplate.NOT_EMPTY, "Ingrese descripcion");
-        validator.addValidation(this.txtPrecio, Range.greaterThan(0.0f), "Precio mayor a 0");
-        validator.addValidation(this.txtPrecio, RegexTemplate.NOT_EMPTY, "Precio requerido");
-        validator.addValidation(this.txtStock, Range.greaterThan(-1), "Stock 0 o mayor");
+        validator.addValidation(txtCodigo, "[a-zA-Z\\s]+", "Ingrese codigo valido");
+        validator.addValidation(txtNombre, RegexTemplate.NOT_EMPTY, "Requerido");
+        validator.addValidation(txtNombre, "[a-zA-Z\\s]+", "Ingrese nombre");
+        validator.addValidation(txtDescripcion, RegexTemplate.NOT_EMPTY, "Ingrese descripcion");
+        validator.addValidation(txtPrecio, Range.greaterThan(0.0f), "Precio mayor a 0");
+        validator.addValidation(txtPrecio, RegexTemplate.NOT_EMPTY, "Precio requerido");
+        validator.addValidation(txtStock, Range.greaterThan(-1), "Stock 0 o mayor");
     }
 
     /**
@@ -75,12 +78,12 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
      */
     @Override
     public void agregarProducto() {
-        String codigo = this.txtCodigo.getText().toString();
-        String nombre = this.txtNombre.getText().toString();
-        String descripcion = this.txtDescripcion.getText().toString();
-        String imagen = this.txtImagen.getText().toString();
-        Double precio = Double.valueOf(this.txtPrecio.getText().toString());
-        Integer stock = Integer.valueOf(this.txtStock.getText().toString());
+        String codigo = txtCodigo.getText().toString();
+        String nombre = txtNombre.getText().toString();
+        String descripcion = txtDescripcion.getText().toString();
+        String imagen = txtImagen.getText().toString();
+        Double precio = Double.valueOf(txtPrecio.getText().toString());
+        Integer stock = Integer.valueOf(txtStock.getText().toString());
 
         this.presenter.agregarProducto(
                 codigo, nombre, descripcion, precio, stock, imagen
