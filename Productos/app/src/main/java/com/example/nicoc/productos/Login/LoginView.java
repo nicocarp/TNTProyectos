@@ -13,21 +13,29 @@ import com.example.nicoc.productos.Database.ManagerDB;
 import com.example.nicoc.productos.MainActivity;
 import com.example.nicoc.productos.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class LoginView extends AppCompatActivity implements ILogin.View {
 
-    private EditText txtUsername;
-    private EditText txtPassword;
+    @BindView(R.id.txtPassword) EditText txtPassword;
+    @BindView(R.id.txtUsername) EditText txtUsername;
+
     private ILogin.Presenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_view);
-        txtPassword = (EditText)findViewById(R.id.txtPassword);
-        txtUsername = (EditText)findViewById(R.id.txtUsername);
+
+        ButterKnife.bind(this);
+
         this.presenter = new LoginPresenter(this);
     }
 
-    public void login(View view){
+    @OnClick(R.id.btnLogin)
+    public void login(){
         validarUsuario();
     }
 
