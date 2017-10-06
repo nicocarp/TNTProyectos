@@ -1,19 +1,21 @@
 package com.example.nicoc.productos.Producto.Agregar;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+import com.example.nicoc.productos.Producto.Listado.ListadoView;
 import com.example.nicoc.productos.R;
 import com.google.common.collect.Range;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class AgregarProductoView extends AppCompatActivity implements IProducto.View {
 
@@ -54,30 +56,11 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
         validator.addValidation(txtStock, Range.greaterThan(-1), "Stock 0 o mayor");
     }
 
-    /**
-     * Se ejecuta ante el evento clikc en boton btnAgregarProducto. Se valida formulario
-     *  y luego se agregamos producto al repositorio.
-     * @param v
-     */
-    
-    public void eventoAgregarProducto(View v){
+    @OnClick(R.id.btnAgregarProducto)@Override public void agregarProducto(){
         this.validator.clear();
         if (!this.validator.validate())
             return;
-        agregarProducto();
-    }
 
-    @Override
-    public void mostrarError(String error) {
-        Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
-    }
-
-    /**
-     * Leemos los inputs y creamos un nuevo producto
-     * Prec: los campos deben estar validados NOT_NULL excepto txtImagen
-     */
-    @Override
-    public void agregarProducto() {
         String codigo = txtCodigo.getText().toString();
         String nombre = txtNombre.getText().toString();
         String descripcion = txtDescripcion.getText().toString();
@@ -91,8 +74,14 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
     }
 
     @Override
+    public void mostrarError(String error) {
+        Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void productoAgregado(Long id) {
         Toast.makeText(getApplicationContext(), "Producto agregado "+id, Toast.LENGTH_SHORT).show();
-        // ir a otra activity o lo que sea
+        Intent intent = new Intent(AgregarProductoView.this, ListadoView.class);
+        startActivity(intent);
     }
 }

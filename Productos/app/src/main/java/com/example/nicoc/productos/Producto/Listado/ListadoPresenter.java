@@ -1,12 +1,6 @@
 package com.example.nicoc.productos.Producto.Listado;
 
-import android.content.Intent;
-
 import com.example.nicoc.productos.Database.Producto;
-import com.example.nicoc.productos.MainActivity;
-import com.example.nicoc.productos.Producto.Detalle.ProductoDetalle;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

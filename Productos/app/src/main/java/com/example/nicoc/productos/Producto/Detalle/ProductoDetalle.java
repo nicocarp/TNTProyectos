@@ -1,9 +1,7 @@
 package com.example.nicoc.productos.Producto.Detalle;
 
-import android.support.v4.content.SharedPreferencesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.nicoc.productos.Database.Producto;
