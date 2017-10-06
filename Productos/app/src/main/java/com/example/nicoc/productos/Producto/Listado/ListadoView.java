@@ -38,6 +38,11 @@ public class ListadoView extends AppCompatActivity implements IListado.View{
 
     }
 
+    @Override protected void onResume(){
+        super.onResume();
+        this.getItems();
+    }
+
     @OnClick(R.id.btnFiltrar)
     public void filtrar(){
         ListadoAdapter adapter = (ListadoAdapter)this.listaProductos.getAdapter();

@@ -17,9 +17,7 @@ public class ListadoModel implements IListado.Model {
     public ListadoModel(IListado.Presenter presenter) {
         this.presenter = presenter;
         this.manager = ManagerDB.getInstance();
-        this.getProductos();
     }
-
 
     @Override
     public void getProductos() {

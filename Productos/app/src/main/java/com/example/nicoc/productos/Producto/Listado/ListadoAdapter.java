@@ -1,6 +1,7 @@
 package com.example.nicoc.productos.Producto.Listado;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +25,13 @@ import java.util.List;
 
 public class ListadoAdapter extends BaseAdapter  {
 
-    private Activity activity;
+    private Context activity;
+    private Activity context;
     private  List<Producto> items = Collections.emptyList();
     private  List<Producto> items_all = Collections.emptyList();
 
     public ListadoAdapter(Activity activity, List<Producto> items){
-        this.activity = activity;
+        this.context = activity;
         this.items_all = items;
         this.items = items;
     }
@@ -53,7 +55,7 @@ public class ListadoAdapter extends BaseAdapter  {
     public View getView(int position, View view, ViewGroup viewGroup) {
         View v = view;
         if (view == null){
-            LayoutInflater inf = (LayoutInflater) this.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inf = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inf.inflate (R.layout.item_producto, null);
         }
         ImageView view_img_producto = (ImageView) v.findViewById(R.id.imagenProducto);
