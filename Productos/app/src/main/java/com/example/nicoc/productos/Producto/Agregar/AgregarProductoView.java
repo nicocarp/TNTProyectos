@@ -29,7 +29,6 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
     @BindView(R.id.txtImagen) EditText txtImagen;
 
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_producto_view);
 
@@ -60,6 +59,7 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
      *  y luego se agregamos producto al repositorio.
      * @param v
      */
+    
     public void eventoAgregarProducto(View v){
         this.validator.clear();
         if (!this.validator.validate())

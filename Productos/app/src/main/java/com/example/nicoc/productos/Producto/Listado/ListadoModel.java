@@ -17,6 +17,7 @@ public class ListadoModel implements IListado.Model {
     public ListadoModel(IListado.Presenter presenter) {
         this.presenter = presenter;
         this.manager = ManagerDB.getInstance();
+        this.getProductos();
     }
 
 
@@ -29,8 +30,4 @@ public class ListadoModel implements IListado.Model {
             this.presenter.mostrarError("Sin productos");
     }
 
-    @Override
-    public void getProductos(String nombre, String codigo) {
-
-    }
 }

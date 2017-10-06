@@ -24,6 +24,5 @@ public interface IListado {
     }
     interface Model {
         public void getProductos();
-        public void getProductos(String nombre, String codigo);
     }
 }

@@ -22,14 +22,22 @@ import com.example.nicoc.productos.R;
 import java.util.Collections;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
+import butterknife.OnItemLongClick;
+import butterknife.OnItemSelected;
+
 public class ListadoView extends AppCompatActivity implements IListado.View{
 
     private IListado.Presenter presenter;
-    IListado.Presenter presenter2;
-    private ListView listaProductos;
+
+    @BindView(R.id.listaProductos) ListView listaProductos;
+    @BindView(R.id.txtFiltroCodigo) EditText txtFiltroCodigo;
+    @BindView(R.id.txtFiltroNombre) EditText txtFiltroNombre;
+
     private List<Producto> items;
-    private  ListadoAdapter adaptador;
-    private EditText txtFiltroCodigo, txtFiltroNombre;
 
 
     @Override
@@ -37,37 +45,27 @@ public class ListadoView extends AppCompatActivity implements IListado.View{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_view);
 
+        ButterKnife.bind(this);
+
         this.presenter = new ListadoPresenter(this);
 
-        this.txtFiltroCodigo = (EditText)findViewById(R.id.txtFiltroCodigo);
-        this.txtFiltroNombre = (EditText)findViewById(R.id.txtFiltroNombre);
-
-
-        this.listaProductos = (ListView)findViewById(R.id.listaProductos);
-
-        this.items = Collections.emptyList();
-
-        //this.items = ManagerDB.getInstance().getProductos();
-        this.adaptador = new ListadoAdapter(this, this.items);
-
-        this.listaProductos.setAdapter(this.adaptador);
-
-        this.getItems();
-
-        this.listaProductos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Producto producto = (Producto)listaProductos.getAdapter().getItem(position);
-                presenter.lanzarProductoDetalle(producto);
-            }
-        });
+        //this.iniciarVista();
 
     }
 
+    private void iniciarVista(){
+        this.getItems();
+    }
 
+    @OnClick(R.id.btnFiltrar)
+    public void filtrar(){
+        ListadoAdapter adapter = (ListadoAdapter)this.listaProductos.getAdapter();
+        adapter.filtrado(this.txtFiltroCodigo.getText().toString(), this.txtFiltroNombre.getText().toString());
+    }
 
-    public void filtrar(View v){
-        this.adaptador.filtrado(this.txtFiltroCodigo.getText().toString(), this.txtFiltroNombre.getText().toString());
+    @OnItemClick(R.id.listaProductos) void itemClick(int position){
+        Producto producto = (Producto)listaProductos.getAdapter().getItem(position);
+        presenter.lanzarProductoDetalle(producto);
     }
 
     @Override
@@ -77,9 +75,7 @@ public class ListadoView extends AppCompatActivity implements IListado.View{
 
     @Override
     public void setItems(List<Producto> items) {
-        this.items = items;
-        this.adaptador.setData(this.items);
-
+        listaProductos.setAdapter(new ListadoAdapter(this, items));
     }
 
     @Override

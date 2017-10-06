@@ -2,13 +2,11 @@ package com.example.nicoc.productos.Producto.Listado;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,13 +27,11 @@ public class ListadoAdapter extends BaseAdapter  {
     private Activity activity;
     private  List<Producto> items = Collections.emptyList();
     private  List<Producto> items_all = Collections.emptyList();
-    private ItemClickListener itemClickListener;
 
     public ListadoAdapter(Activity activity, List<Producto> items){
         this.activity = activity;
         this.items_all = items;
         this.items = items;
-
     }
 
     @Override
@@ -115,14 +111,6 @@ public class ListadoAdapter extends BaseAdapter  {
         }
 
         this.refreshData(filtrado);
-    }
-
-    public interface ItemClickListener {
-        void onItemClick(Producto  producto, int position);
-    }
-    /* Probando metodo para detalle de producto */
-    public void setItemClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
     }
 
 
