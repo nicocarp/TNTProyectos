@@ -31,4 +31,10 @@ public class Ventas extends AppCompatActivity
     public void mostrarError(String error) {
         Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onClickComprar(Producto producto, Integer cantidad) {
+        String mje = "Por comprar "+cantidad.toString()+" de "+producto.getNombre();
+        Toast.makeText(getApplicationContext(), mje, Toast.LENGTH_LONG).show();
+    }
 }
