@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nicoc.productos.Venta.ListadoVentas"
+    tools:context="com.example.nicoc.productos.Venta.Ventas"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
@@ -19,9 +19,16 @@
         <fragment
             android:id="@+id/fragmentListadoProductos"
             android:name="com.example.nicoc.productos.Venta.ListadoFragment.ListadoProductosFragment"
-            android:layout_width="match_parent"
+            android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_weight="2" />
+            android:layout_weight="70" />
+
+        <fragment
+            android:id="@+id/fragmentInfoProducto"
+            android:name="com.example.nicoc.productos.Venta.InforProductoFragment.InforProductoFragment"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="30" />
 
 
 

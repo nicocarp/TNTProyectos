@@ -27,7 +27,7 @@
         <activity android:name=".Producto.Agregar.AgregarProductoView" />
         <activity android:name=".Producto.Listado.ListadoView" />
         <activity android:name=".Producto.Detalle.ProductoDetalle" />
-        <activity android:name=".Venta.ListadoVentas"></activity>
+        <activity android:name=".Venta.Ventas"></activity>
     </application>
 
 </manifest>
