@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.RegexTemplate;
 import com.example.nicoc.productos.Database.Producto;
 import com.example.nicoc.productos.R;
 import com.google.common.collect.Range;
@@ -20,9 +21,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
+/**
+ * Fragment que muestra la informacion de un producto, un input para ingresar
+ *  la cantidad a comprar, y boton Comprar. Click en btnComprar pasamos Producto
+ *   y cantidad a la activity contenedora.
+ */
 public class InforProductoFragment extends Fragment {
-
 
     @BindView(R.id.txtCodigo) TextView txtCodigo;
     @BindView(R.id.txtNombre) TextView txtNombre;
@@ -70,8 +74,13 @@ public class InforProductoFragment extends Fragment {
 
     @OnClick(R.id.btnComprar) public void comprar(){
         this.validator.clear();
-        if (!this.validator.validate() && this.producto != null)
+
+        if (!this.validator.validate())
             return;
+        if (this.producto == null){
+            mListener.mostrarError("Seleccione un producto");
+            return;
+        }
         Integer cantidad = Integer.valueOf(txtCantidad.getText().toString());
         mListener.onClickComprar(this.producto, cantidad);
     }

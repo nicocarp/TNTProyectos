@@ -19,6 +19,10 @@ class VentasModel implements IVentas.Model {
         this.managerDB = ManagerDB.getInstance();
     }
 
+
+    /**
+     * Recuperamos los objetos Productos para venderse.
+     */
     @Override
     public void getProductos() {
         List<Producto> productos = managerDB.getProductos();
