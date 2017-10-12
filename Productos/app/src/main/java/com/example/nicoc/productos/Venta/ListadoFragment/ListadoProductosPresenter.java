@@ -8,14 +8,14 @@ import java.util.List;
  * Created by nicoc on 08/10/17.
  */
 
-class VentasPresenter implements IVentas.Presenter {
+class ListadoProductosPresenter implements IListadoProductos.Presenter {
 
-    private IVentas.View view;
-    private IVentas.Model model;
+    private IListadoProductos.View view;
+    private IListadoProductos.Model model;
 
-    public VentasPresenter(IVentas.View view) {
+    public ListadoProductosPresenter(IListadoProductos.View view) {
         this.view = view;
-        this.model = new VentasModel(this);
+        this.model = new ListadoProductoModel(this);
     }
 
     @Override

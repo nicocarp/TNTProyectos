@@ -9,12 +9,12 @@ import java.util.List;
  * Created by nicoc on 08/10/17.
  */
 
-class VentasModel implements IVentas.Model {
+class ListadoProductoModel implements IListadoProductos.Model {
 
-    private IVentas.Presenter presenter;
+    private IListadoProductos.Presenter presenter;
     private ManagerDB managerDB;
 
-    public VentasModel(IVentas.Presenter presenter) {
+    public ListadoProductoModel(IListadoProductos.Presenter presenter) {
         this.presenter = presenter;
         this.managerDB = ManagerDB.getInstance();
     }

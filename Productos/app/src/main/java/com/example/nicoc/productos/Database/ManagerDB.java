@@ -89,6 +89,18 @@ public class ManagerDB extends DaoMaster.OpenHelper {
         return usuarioDao.insert(usuario);
 
     }
+
+    //public Venta agregarVenta(Usuario usuario, Producto producto, Integer cantidad)
+    public Venta agregarVenta(Producto producto, Integer cantidad){
+        Venta venta = new Venta();
+        venta.setFecha(new java.util.Date());
+        venta.setMonto_total((long) 23000);
+        venta.setCantidad(cantidad);
+        venta.setProducto(producto);
+        daoSession.getVentaDao().insert(venta);
+        return venta;
+    }
+
     public void generar_productos_ventas(){
         ProductoDao productoDao = daoSession.getProductoDao();
         VentaDao ventaDao = daoSession.getVentaDao();
@@ -109,5 +121,11 @@ public class ManagerDB extends DaoMaster.OpenHelper {
             venta.setProducto(producto);
             ventaDao.insert(venta);
         }
+    }
+
+    public Usuario getUserById(Long id){
+        UsuarioDao usuarioDao = daoSession.getUsuarioDao();
+        Usuario u = usuarioDao.queryBuilder().where(UsuarioDao.Properties.Id.eq(id)).unique();
+        return u;
     }
 }

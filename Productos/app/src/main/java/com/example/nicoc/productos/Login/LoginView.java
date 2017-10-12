@@ -1,6 +1,8 @@
 package com.example.nicoc.productos.Login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ import com.example.nicoc.productos.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 
 public class LoginView extends AppCompatActivity implements ILogin.View {
 
@@ -51,6 +54,11 @@ public class LoginView extends AppCompatActivity implements ILogin.View {
 
     @Override
     public void usuarioValido(Long id_usuario) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putString(MainActivity.USER_ID, String.valueOf(id_usuario));
+        edit.commit();
+
         startActivity(new Intent(LoginView.this, MainActivity.class));
     }
 

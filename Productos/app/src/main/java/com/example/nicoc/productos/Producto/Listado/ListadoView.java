@@ -18,14 +18,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
+import butterknife.OnTextChanged;
 
-public class ListadoView extends AppCompatActivity implements IListado.View{
+public class ListadoView extends AppCompatActivity implements IListado.View {
 
     private IListado.Presenter presenter;
 
-    @BindView(R.id.listaProductos) ListView listaProductos;
-    @BindView(R.id.txtFiltroCodigo) EditText txtFiltroCodigo;
-    @BindView(R.id.txtFiltroNombre) EditText txtFiltroNombre;
+    @BindView(R.id.listaProductos)
+    ListView listaProductos;
+    @BindView(R.id.txtFiltroCodigo)
+    EditText txtFiltroCodigo;
+    @BindView(R.id.txtFiltroNombre)
+    EditText txtFiltroNombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +42,20 @@ public class ListadoView extends AppCompatActivity implements IListado.View{
 
     }
 
-    @Override protected void onResume(){
+    @Override
+    protected void onResume() {
         super.onResume();
         this.getItems();
     }
 
-    @OnClick(R.id.btnFiltrar)
-    public void filtrar(){
+    @OnTextChanged(R.id.txtFiltroCodigo)void onFiltroCodigo(){
+        filtrar();
+    }
+    @OnTextChanged(R.id.txtFiltroNombre)void onFiltroNombre(){
+        filtrar();
+    }
+
+    private void filtrar(){
         ListadoAdapter adapter = (ListadoAdapter)this.listaProductos.getAdapter();
         adapter.filtrado(this.txtFiltroCodigo.getText().toString(), this.txtFiltroNombre.getText().toString());
     }

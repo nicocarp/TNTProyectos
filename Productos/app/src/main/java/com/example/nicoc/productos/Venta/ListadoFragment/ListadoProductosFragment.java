@@ -18,9 +18,9 @@ import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
 
-public class ListadoProductosFragment extends Fragment implements IVentas.View {
+public class ListadoProductosFragment extends Fragment implements IListadoProductos.View {
 
-    private IVentas.Presenter presenter;
+    private IListadoProductos.Presenter presenter;
 
     @BindView(R.id.listProductos) ListView listProductos;
 
@@ -43,7 +43,7 @@ public class ListadoProductosFragment extends Fragment implements IVentas.View {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-        this.presenter = new VentasPresenter(this);
+        this.presenter = new ListadoProductosPresenter(this);
         this.getItems();
     }
 

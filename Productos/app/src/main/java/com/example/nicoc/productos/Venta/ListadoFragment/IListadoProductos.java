@@ -8,7 +8,7 @@ import java.util.List;
  * Created by nicoc on 08/10/17.
  */
 
-public interface IVentas {
+public interface IListadoProductos {
 
     interface View {
         public void getItems();
