@@ -1,4 +1,4 @@
-package com.example.nicoc.productos.Venta;
+package com.example.nicoc.productos.Venta.AgregarVenta;
 
 import android.content.Context;
 import android.content.SharedPreferences;

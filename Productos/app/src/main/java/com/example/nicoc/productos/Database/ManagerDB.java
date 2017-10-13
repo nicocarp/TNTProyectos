@@ -128,4 +128,8 @@ public class ManagerDB extends DaoMaster.OpenHelper {
         Usuario u = usuarioDao.queryBuilder().where(UsuarioDao.Properties.Id.eq(id)).unique();
         return u;
     }
+
+    public List<Venta> getVentas() {
+        return daoSession.getVentaDao().queryBuilder().list();
+    }
 }

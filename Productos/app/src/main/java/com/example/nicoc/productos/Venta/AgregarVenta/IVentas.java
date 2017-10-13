@@ -1,4 +1,4 @@
-package com.example.nicoc.productos.Venta;
+package com.example.nicoc.productos.Venta.AgregarVenta;
 
 import com.example.nicoc.productos.Database.Producto;
 import com.example.nicoc.productos.Database.Usuario;

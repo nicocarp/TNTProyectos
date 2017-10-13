@@ -1,4 +1,4 @@
-package com.example.nicoc.productos.Venta.ListadoFragment;
+package com.example.nicoc.productos.Venta.ListadoProductoFragment;
 
 import com.example.nicoc.productos.Database.ManagerDB;
 import com.example.nicoc.productos.Database.Producto;

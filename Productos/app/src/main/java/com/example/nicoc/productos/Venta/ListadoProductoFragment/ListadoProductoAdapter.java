@@ -1,4 +1,4 @@
-package com.example.nicoc.productos.Venta.ListadoFragment;
+package com.example.nicoc.productos.Venta.ListadoProductoFragment;
 
 import android.app.Activity;
 import android.content.Context;

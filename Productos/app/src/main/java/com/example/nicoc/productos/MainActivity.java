@@ -6,7 +6,8 @@ import android.os.Bundle;
 
 import com.example.nicoc.productos.Producto.Agregar.AgregarProductoView;
 import com.example.nicoc.productos.Producto.Listado.ListadoView;
-import com.example.nicoc.productos.Venta.VentasView;
+import com.example.nicoc.productos.Venta.AgregarVenta.VentasView;
+import com.example.nicoc.productos.Venta.VentasMainActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -35,6 +36,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btnListadoVentas) void lanzarListadoVentas(){
-        startActivity(new Intent(MainActivity.this, VentasView.class));
+        startActivity(new Intent(MainActivity.this, VentasMainActivity.class));
     }
 }

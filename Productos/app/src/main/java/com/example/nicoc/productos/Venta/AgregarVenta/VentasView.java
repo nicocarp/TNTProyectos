@@ -1,4 +1,4 @@
-package com.example.nicoc.productos.Venta;
+package com.example.nicoc.productos.Venta.AgregarVenta;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,7 @@ import com.example.nicoc.productos.Database.Venta;
 import com.example.nicoc.productos.MainActivity;
 import com.example.nicoc.productos.R;
 import com.example.nicoc.productos.Venta.InforProductoFragment.InforProductoFragment;
-import com.example.nicoc.productos.Venta.ListadoFragment.ListadoProductosFragment;
+import com.example.nicoc.productos.Venta.ListadoProductoFragment.ListadoProductosFragment;
 
 /**
  * Esta activity contiene dos fragments: uno que muestra el listado de productos y otro
