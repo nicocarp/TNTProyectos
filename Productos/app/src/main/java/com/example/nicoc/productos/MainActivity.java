@@ -38,4 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btnListadoVentas) void lanzarListadoVentas(){
         startActivity(new Intent(MainActivity.this, VentasMainActivity.class));
     }
+    @OnClick(R.id.btnAgregarVenta)void lanzarAgregarVenta(){
+        startActivity(new Intent(MainActivity.this, VentasView.class));
+    }
 }
