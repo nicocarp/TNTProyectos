@@ -7,11 +7,11 @@
     tools:context="com.example.nicoc.productos.Producto.Agregar.AgregarProductoView">
 
     <LinearLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <EditText
             android:id="@+id/txtCodigo"
@@ -19,9 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="Ingrese un codigo"
             android:inputType="textPersonName"
-            android:text=""
-            android:hint="Ingrese un codigo"/>
+            android:text="" />
 
         <EditText
             android:id="@+id/txtNombre"
@@ -29,18 +29,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="Ingrese un Nombre"
             android:inputType="textPersonName"
-            android:text=""
-            android:hint="Ingrese un Nombre"/>
+            android:text="" />
+
         <EditText
             android:id="@+id/txtDescripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="Descripcion"
             android:inputType="textPersonName"
-            android:text=""
-            android:hint="Descripcion"/>
+            android:text="" />
 
         <EditText
             android:id="@+id/txtPrecio"
@@ -48,34 +49,42 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="Precio"
             android:inputType="numberDecimal|number"
-            android:text=""
-            android:hint="Precio"/>
+            android:text="" />
+
         <EditText
             android:id="@+id/txtStock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="Ingrese Stock"
             android:inputType="number"
-            android:text=""
-            android:hint="Ingrese Stock"/>
+            android:text="" />
+
         <EditText
             android:id="@+id/txtImagen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="Imagen"
             android:inputType="textPersonName"
-            android:text=""
-            android:hint="Imagen"/>
+            android:text="" />
+
+        <ImageView
+            android:id="@+id/imagenProducto"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/ic_launcher" />
 
         <Button
             android:id="@+id/btnAgregarProducto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button"
-            />
+            android:text="Agregar" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
