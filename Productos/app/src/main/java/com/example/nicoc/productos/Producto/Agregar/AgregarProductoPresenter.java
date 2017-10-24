@@ -1,5 +1,11 @@
 package com.example.nicoc.productos.Producto.Agregar;
 
+import android.graphics.Bitmap;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by nicoc on 25/09/17.
  */
@@ -20,9 +26,17 @@ public class AgregarProductoPresenter implements IProducto.Presenter{
     }
 
     @Override
-    public void agregarProducto(String codigo, String nombre, String descripcion, Double precio, Integer stock, String imagen) {
-        this.model.agregarProducto(codigo, nombre, descripcion, precio, stock, imagen);
+    public void agregarProducto(String codigo, String nombre, String descripcion, Double precio, Integer stock, Bitmap bitmap_imagen) {
+        String nombre_imagen = null;
+        if (bitmap_imagen != null){
+            SimpleDateFormat format = new SimpleDateFormat("yyyymmsshhmmss");
+            String date = format.format(new Date());
+            nombre_imagen = "img" + date;
+            this.model.guardarImagen(bitmap_imagen, nombre_imagen);
+        }
+        this.model.agregarProducto(codigo, nombre, descripcion, precio, stock, nombre_imagen);
     }
+
 
     @Override
     public void productoAgregado(Long id_producto) {

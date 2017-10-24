@@ -74,13 +74,11 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
         validator.addValidation(txtStock, Range.greaterThan(-1), "Stock 0 o mayor");
     }
 
-    @OnClick(R.id.txtImagen) void seleccionarImagen(){
+    @OnClick(R.id.imagenProducto) void seleccionarImagen(){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-
-        //intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
         startActivityForResult(intent, 1);
     }
+
     @OnClick(R.id.btnAgregarProducto)@Override public void agregarProducto(){
         this.validator.clear();
         if (!this.validator.validate())
@@ -89,13 +87,16 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
         String codigo = txtCodigo.getText().toString();
         String nombre = txtNombre.getText().toString();
         String descripcion = txtDescripcion.getText().toString();
-        //String imagen = txtImagen.getText().toString();
         Double precio = Double.valueOf(txtPrecio.getText().toString());
         Integer stock = Integer.valueOf(txtStock.getText().toString());
 
-        String imagen = saveImage();
+        Bitmap bmap = null;
+        if (imagenProducto.getDrawable() != null){
+            bmap= ((BitmapDrawable)imagenProducto.getDrawable()).getBitmap();
+        };
+
         this.presenter.agregarProducto(
-                codigo, nombre, descripcion, precio, stock, imagen
+                codigo, nombre, descripcion, precio, stock, bmap
         );
     }
 
@@ -107,44 +108,6 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
                 Bundle extras = data.getExtras();
                 Bitmap bMap = (Bitmap) extras.get("data");
                 imagenProducto.setImageBitmap(bMap);
-                //saveImage(bMap);
-                /*
-                File f = new File(Environment.getExternalStorageDirectory().|());
-                for (File temp : f.listFiles()) {
-                    if (temp.getName().equals("temp.jpg")) {
-                        f = temp;
-                        break;
-                    }
-                }
-                try {
-                    Bitmap bitmap;
-                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-                    bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),
-                            bitmapOptions);
-                    imagenProducto.setImageBitmap(bitmap);
-                    String path = android.os.Environment
-                            .getExternalStorageDirectory()
-                            + File.separator
-                            + "Phoenix" + File.separator + "default";
-                    f.delete();
-                    OutputStream outFile = null;
-                    File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
-                    try {
-                        outFile = new FileOutputStream(file);
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
-                        outFile.flush();
-                        outFile.close();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                */
             }
         }
     }
