@@ -35,11 +35,9 @@ public class ProductoDetalle extends AppCompatActivity {
         this.txtStock = (TextView)findViewById(R.id.txtStock );
         this.txtImagen = (TextView)findViewById(R.id.txtImagen );
 
-
         Producto producto= getIntent().getParcelableExtra(EXTRA_REPOSITORY);
 
         this.iniciarView(producto);
-
     }
 
     private void setImagen(Producto producto){
@@ -49,14 +47,10 @@ public class ProductoDetalle extends AppCompatActivity {
             File imgFile = new  File(file_base.getAbsolutePath()+File.separator+producto.getImagen() +".jpg");
             if(imgFile.exists())
             {
-
                 imagenProducto.setImageURI(Uri.fromFile(imgFile));
-                Toast.makeText(getApplicationContext(), "imagen cargada", Toast.LENGTH_SHORT).show();
-
-
             }
+            Toast.makeText(getApplicationContext(), "Error al cargar imagen", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private void iniciarView(Producto producto) {
@@ -68,5 +62,4 @@ public class ProductoDetalle extends AppCompatActivity {
         this.txtStock.setText(((Integer) producto.getStock()).toString());
         this.txtImagen.setText(producto.getImagen());
     }
-
 }

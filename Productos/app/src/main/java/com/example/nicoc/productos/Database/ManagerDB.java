@@ -52,11 +52,6 @@ public class ManagerDB extends DaoMaster.OpenHelper {
             return listado.get(0).getId();
     }
 
-    public List<Producto> getProductosAll(){
-        List<Producto> productos = daoSession.getProductoDao().queryBuilder().list();
-        return productos;
-    }
-
     public List<Producto> getProductosFilter(String codigo, String nombre){
         QueryBuilder query = daoSession.getProductoDao().queryBuilder();
         query.where(ProductoDao.Properties.Codigo.eq(codigo),
