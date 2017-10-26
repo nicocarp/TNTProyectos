@@ -5,6 +5,7 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.ToOne;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
@@ -48,6 +49,11 @@ public class Venta {
     }
     public Date getFecha() {
         return this.fecha;
+    }
+    public String getFechaString(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/mm/ss");
+        String date = format.format(this.getFecha());
+        return date;
     }
     public void setFecha(Date fecha) {
         this.fecha = fecha;

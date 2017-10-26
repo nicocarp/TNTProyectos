@@ -2,6 +2,7 @@ package com.example.nicoc.productos.Venta.ListadoProductoFragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.nicoc.productos.Database.ManagerFile;
 import com.example.nicoc.productos.Database.Producto;
 import com.example.nicoc.productos.R;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -63,6 +66,10 @@ public class ListadoProductoAdapter extends BaseAdapter  {
         Producto p = this.items.get(position);
 
         // view_img_producto.setImageDrawable(p.getImagen()); ARREGLAR LO DE IMAGEN
+        File file_image = new ManagerFile().getFileImagenByName(p.getImagen());
+        if (file_image != null)
+            view_img_producto.setImageURI(Uri.fromFile(file_image));
+
         view_txt_codigo.setText(p.getCodigo());
         view_txt_nombre.setText(p.getNombre());
 

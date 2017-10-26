@@ -46,10 +46,9 @@ public class ProductoDetalle extends AppCompatActivity {
         if (producto.getImagen() != null){
             File imgFile = new  File(file_base.getAbsolutePath()+File.separator+producto.getImagen() +".jpg");
             if(imgFile.exists())
-            {
                 imagenProducto.setImageURI(Uri.fromFile(imgFile));
-            }
-            Toast.makeText(getApplicationContext(), "Error al cargar imagen", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(getApplicationContext(), "Error al cargar imagen", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -9,6 +9,7 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ManagerDB extends DaoMaster.OpenHelper {

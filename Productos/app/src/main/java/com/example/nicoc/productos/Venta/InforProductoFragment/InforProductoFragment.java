@@ -8,14 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+import com.example.nicoc.productos.Database.ManagerFile;
 import com.example.nicoc.productos.Database.Producto;
 import com.example.nicoc.productos.R;
 import com.google.common.collect.Range;
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +38,8 @@ public class InforProductoFragment extends Fragment {
     @BindView(R.id.txtPrecio) TextView txtPrecio;
     @BindView(R.id.txtStock) TextView txtStock;
     @BindView(R.id.txtImagen) TextView txtImagen;
+    @BindView(R.id.imagenProducto)
+    ImageView imagenProducto;
 
     private AwesomeValidation validator;
     @BindView(R.id.txtCantidad) EditText txtCantidad;
@@ -93,6 +99,13 @@ public class InforProductoFragment extends Fragment {
         this.txtPrecio.setText(((Double)producto.getPrecio()).toString());
         this.txtStock.setText(((Integer) producto.getStock()).toString());
         this.txtImagen.setText(producto.getImagen());
+
+        File file_image = new ManagerFile().getFileImagenByName(producto.getImagen());
+        if (file_image != null)
+            imagenProducto.setImageURI(Uri.fromFile(file_image));
+        else
+            imagenProducto.setImageDrawable(null);
+
     }
 
 }

@@ -12,6 +12,13 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
+        <ImageView
+            android:id="@+id/imagenProducto"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:layout_weight="1"
+
+            />
         <TextView
             android:id="@+id/txtImagen"
             android:layout_width="wrap_content"

@@ -1,6 +1,7 @@
 package com.example.nicoc.productos.Venta.ListaVentasFragment;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.nicoc.productos.Database.ManagerFile;
 import com.example.nicoc.productos.Database.Venta;
 import com.example.nicoc.productos.R;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -57,8 +60,12 @@ public class ListaVentasAdapter extends BaseAdapter{
         // cargamos los datos
         Venta venta = this.items.get(position);
 
+        File file_image = new ManagerFile().getFileImagenByName(venta.getProducto().getImagen());
+        if (file_image != null)
+            view_img_producto.setImageURI(Uri.fromFile(file_image));
+
         // view_img_producto.setImageDrawable(p.getImagen()); ARREGLAR LO DE IMAGEN
-        view_txt_fechaVenta.setText(venta.getFecha().toString());
+        view_txt_fechaVenta.setText(venta.getFechaString());
         view_txt_monto.setText("$"+venta.getMonto_total().toString());
 
         return v;
