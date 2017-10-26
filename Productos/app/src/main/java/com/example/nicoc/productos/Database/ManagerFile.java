@@ -16,21 +16,25 @@ public class ManagerFile {
     private final static String IMAGENES_PATH = "imagenes";
     private final static String EXT_IMAGEN = ".jpg";
 
+    private static ManagerFile instance = null;
+
+    public static ManagerFile getInstance(){
+        if (instance == null)
+            instance = new ManagerFile();
+        return instance;
+    }
     private File getAlmacenamiento(){
         File file_base = android.os.Environment.getExternalStorageDirectory();
         return new File(file_base, IMAGENES_PATH);
     }
 
-    public void guardarImagen(Bitmap bitmap, String nombre){
+    public void guardarImagen(Bitmap bitmap, String nombre) throws FileNotFoundException {
         File file_base = getAlmacenamiento();
         String file_name = file_base.getAbsolutePath() + File.separator + nombre + EXT_IMAGEN;
         File new_file = new File(file_name);
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(new_file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        FileOutputStream fileOutputStream = new FileOutputStream(new_file);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+
     }
 
     /**

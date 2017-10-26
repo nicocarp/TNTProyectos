@@ -1,6 +1,7 @@
 package com.example.nicoc.productos.Producto.Agregar;
 
 import com.example.nicoc.productos.Database.ManagerDB;
+import com.example.nicoc.productos.Database.ManagerFile;
 import com.example.nicoc.productos.Database.Producto;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,10 +21,12 @@ public class AgregarProductoModel implements IProducto.Model{
 
     private IProducto.Presenter presenter;
     private ManagerDB manager;
+    private ManagerFile managerFile;
 
     public AgregarProductoModel(IProducto.Presenter presenter) {
         this.presenter = presenter;
         this.manager = ManagerDB.getInstance();
+        this.managerFile = ManagerFile.getInstance();
     }
 
     @Override
@@ -47,25 +50,14 @@ public class AgregarProductoModel implements IProducto.Model{
 
     @Override
     public void guardarImagen(Bitmap bitmap, String nombre) {
-        File file = this.getDisc();
-
-        String file_name = file.getAbsolutePath() + File.separator + nombre + EXT_IMAGEN;
-        File new_file = new File(file_name);
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(new_file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+            this.managerFile.guardarImagen(bitmap, nombre);
             this.presenter.mostrarError("Imagen guardada");
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            // debug borrar despues
+            this.presenter.mostrarError(e.getMessage().toString());
         }
+
     }
 
-    /**
-     * Obtenemos un archivo donde guardamos las imagenes.
-     * @return
-     */
-    public File getDisc(){
-        File file = android.os.Environment.getExternalStorageDirectory();
-        return new File(file, BASE_PATH);
-    }
 }
