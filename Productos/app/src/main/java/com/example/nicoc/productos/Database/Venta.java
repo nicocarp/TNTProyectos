@@ -19,7 +19,7 @@ public class Venta {
     @Id(autoincrement=true) private Long id;
     @NotNull private Date fecha;
     @NotNull private Integer cantidad;
-    @NotNull private Long monto_total;
+    @NotNull private Double monto_total;
 
     @NotNull private Long producto_id;
     @ToOne(joinProperty = "producto_id") private Producto producto;
@@ -29,18 +29,7 @@ public class Venta {
     /** Used for active entity operations. */
     @Generated(hash = 1340327861)
     private transient VentaDao myDao;
-    @Generated(hash = 585326660)
-    public Venta(Long id, @NotNull Date fecha, @NotNull Integer cantidad, @NotNull Long monto_total,
-            @NotNull Long producto_id) {
-        this.id = id;
-        this.fecha = fecha;
-        this.cantidad = cantidad;
-        this.monto_total = monto_total;
-        this.producto_id = producto_id;
-    }
-    @Generated(hash = 597866144)
-    public Venta() {
-    }
+    
     public Long getId() {
         return this.id;
     }
@@ -66,10 +55,10 @@ public class Venta {
         this.cantidad = cantidad;
     }
 
-    public Long getMonto_total() {
+    public Double getMonto_total() {
         return this.monto_total;
     }
-    public void setMonto_total(Long monto_total) {
+    public void setMonto_total(Double monto_total) {
         this.monto_total = monto_total;
     }
     public Long getProducto_id() {
@@ -80,6 +69,19 @@ public class Venta {
     }
     @Generated(hash = 1163473062)
     private transient Long producto__resolvedKey;
+
+    @Generated(hash = 243011124)
+    public Venta(Long id, @NotNull Date fecha, @NotNull Integer cantidad, @NotNull Double monto_total,
+            @NotNull Long producto_id) {
+        this.id = id;
+        this.fecha = fecha;
+        this.cantidad = cantidad;
+        this.monto_total = monto_total;
+        this.producto_id = producto_id;
+    }
+    @Generated(hash = 597866144)
+    public Venta() {
+    }
     /** To-one relationship, resolved on first access. */
     @Generated(hash = 1017687825)
     public Producto getProducto() {

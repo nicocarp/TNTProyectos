@@ -90,7 +90,8 @@ public class ManagerDB extends DaoMaster.OpenHelper {
     public Venta agregarVenta(Producto producto, Integer cantidad) throws Exception {
         Venta venta = new Venta();
         venta.setFecha(new java.util.Date());
-        venta.setMonto_total((long) 23000);
+        Double monto = producto.getPrecio() * cantidad;
+        venta.setMonto_total(monto);
         venta.setCantidad(cantidad);
         venta.setProducto(producto);
 
@@ -121,7 +122,7 @@ public class ManagerDB extends DaoMaster.OpenHelper {
 
             Venta venta= new Venta();
             venta.setFecha(Date.valueOf("2017-01-01"));
-            venta.setMonto_total((long) 20);
+            venta.setMonto_total((double) 20);
             venta.setProducto(producto);
             ventaDao.insert(venta);
         }
