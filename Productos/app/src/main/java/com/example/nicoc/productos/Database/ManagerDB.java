@@ -87,12 +87,16 @@ public class ManagerDB extends DaoMaster.OpenHelper {
     }
 
     //public Venta agregarVenta(Usuario usuario, Producto producto, Integer cantidad)
-    public Venta agregarVenta(Producto producto, Integer cantidad){
+    public Venta agregarVenta(Producto producto, Integer cantidad) throws Exception {
         Venta venta = new Venta();
         venta.setFecha(new java.util.Date());
         venta.setMonto_total((long) 23000);
         venta.setCantidad(cantidad);
         venta.setProducto(producto);
+
+        if (producto.getStock() < cantidad)
+            throw new Exception("Invalido stock negativo");
+        venta.getProducto().setStock((producto.getStock() - cantidad));
         daoSession.getVentaDao().insert(venta);
         return venta;
     }
@@ -107,7 +111,11 @@ public class ManagerDB extends DaoMaster.OpenHelper {
             producto.setDescripcion("Una descripcion");
             producto.setImagen("Una_imagen");
             producto.setPrecio(Double.valueOf(20));
-            producto.setStock(0);
+            try {
+                producto.setStock(0);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             Long clave = productoDao.insert(producto);
 

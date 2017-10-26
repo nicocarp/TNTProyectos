@@ -95,7 +95,7 @@ public class Producto implements Parcelable{
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
-    public void setStock(Integer stock) {
+    public void setStock(Integer stock)  {
         this.stock = stock;
     }
     public String getImagen() {
