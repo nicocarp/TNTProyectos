@@ -10,10 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nicoc.productos.Database.ManagerFile;
+import com.example.nicoc.productos.Database.Producto;
 import com.example.nicoc.productos.Database.Venta;
 import com.example.nicoc.productos.R;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -69,6 +72,41 @@ public class ListaVentasAdapter extends BaseAdapter{
         view_txt_monto.setText("$"+venta.getMonto_total().toString());
 
         return v;
+    }
+
+    /**
+     * Setea un nuevo listado de items que se muestran, items_all permanece igual. Usado despues de filtros.
+     * @param items Listados de objetos Producto
+     */
+    private void refreshData(List<Venta> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Metodo personalizado para filtrar listado de ventas por producto y fecha
+     * @param codigo String (convertido a minuscula para buscar)
+     * @param fecha_ini Date (buscar por fecha)
+     * @param fecha_fin Date (buscar por fecha)
+     */
+    public void filtrado(String codigo, Date fecha_ini, Date fecha_fin){
+
+        String filtro_codigo = codigo.toString().toLowerCase();
+
+        List<Venta> filtrado = new ArrayList<Venta>();
+
+        for (Venta  venta: this.items_all){
+            if (
+                    (
+                            (venta.getFecha().compareTo(fecha_ini) >= 0) &&
+                            (venta.getFecha().compareTo(fecha_fin) <= 0)
+                    ) &&
+                            venta.getProducto().getCodigo().toLowerCase().contains(filtro_codigo)
+                    )
+                filtrado.add(venta);
+        }
+
+        this.refreshData(filtrado);
     }
 
 }

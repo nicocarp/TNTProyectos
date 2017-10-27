@@ -40,7 +40,7 @@ public class Venta {
         return this.fecha;
     }
     public String getFechaString(){
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/mm/ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         String date = format.format(this.getFecha());
         return date;
     }
