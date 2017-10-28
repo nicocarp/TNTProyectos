@@ -12,7 +12,7 @@ public class App extends Application {
         try {
             // inicio base de datos.
             new ManagerDB(this, "notes-db");
-            //this.deleteDatabase("notes-db");
+           // this.deleteDatabase("notes-db");
 
         } catch (Exception e){
             // SIN BD SE ROMPE LA APP. sacar trucatch despues

@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.example.nicoc.productos.Database.Producto;
 import com.example.nicoc.productos.Database.Venta;
 import com.example.nicoc.productos.Producto.Listado.ListadoAdapter;
@@ -35,7 +37,7 @@ public class ListaVentasFragment extends Fragment implements IListaVentas.View{
     @BindView(R.id.txtFiltroFechaIni)EditText txtFiltroFechaIni;
     @BindView(R.id.txtFiltroFechaFin)EditText txtFiltroFechaFin;
 
-
+    private AwesomeValidation validator;
 
     private IListaVentas.Presenter presenter;
 
@@ -50,6 +52,7 @@ public class ListaVentasFragment extends Fragment implements IListaVentas.View{
         super.onActivityCreated(state);
         this.presenter = new ListaVentasPresenter(this);
         this.getItems();
+        iniciarView();
     }
 
     @Override
@@ -76,9 +79,18 @@ public class ListaVentasFragment extends Fragment implements IListaVentas.View{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lista_ventas, container, false);
+        this.validator = new AwesomeValidation(ValidationStyle.BASIC);
         ButterKnife.bind(this, view);
 
         return view;
+    }
+
+    private void iniciarView() {
+        txtFiltroFechaIni.setText("2017/01/01");
+        txtFiltroFechaFin.setText("2017/12/30");
+
+        validator.addValidation(txtFiltroFechaIni, "\\d{4}/\\d{2}/\\d{2}", "yyyy/mm/dd");
+        validator.addValidation(txtFiltroFechaFin, "\\d{4}/\\d{2}/\\d{2}", "yyyy/mm/dd");
     }
 
     @OnTextChanged(R.id.txtFiltroCodigo)void filtroCodigo(){
@@ -92,7 +104,8 @@ public class ListaVentasFragment extends Fragment implements IListaVentas.View{
     }
 
     private void filtrado(){
-
+        if (!this.validator.validate())
+            return;
         DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         try {
             Date fecha_ini = format.parse(txtFiltroFechaIni.getText().toString());

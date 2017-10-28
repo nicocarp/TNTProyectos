@@ -8,31 +8,26 @@
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
-
-
 
         <fragment
             android:id="@+id/fragmentListadoProductos"
             android:name="com.example.nicoc.productos.Venta.ListadoProductoFragment.ListadoProductosFragment"
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_weight="70" />
+            android:layout_weight="50" />
 
         <fragment
             android:id="@+id/fragmentInfoProducto"
             android:name="com.example.nicoc.productos.Venta.InforProductoFragment.InforProductoFragment"
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_weight="30" />
-
-
+            android:layout_weight="50" />
 
     </LinearLayout>
 

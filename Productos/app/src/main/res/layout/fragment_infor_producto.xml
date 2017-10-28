@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.nicoc.productos.Venta.InforProductoFragment.InforProductoFragment">
 
@@ -16,73 +16,65 @@
             android:id="@+id/imagenProducto"
             android:layout_width="200px"
             android:layout_height="200px"
-            android:layout_weight="1"
-
-            />
-        <TextView
-            android:id="@+id/txtImagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="" />
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/txtCodigo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="" />
 
         <TextView
             android:id="@+id/txtNombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="" />
 
         <TextView
             android:id="@+id/txtDescripcion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <TextView
             android:id="@+id/txtPrecio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="" />
 
         <TextView
             android:id="@+id/txtStock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/txtCantidad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
             android:hint="Cantidad"
             android:inputType="number"
             android:text="" />
-
+        <TextView
+            android:id="@+id/txtPrecioTotal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="" />
         <Button
             android:id="@+id/btnComprar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Comprar" />
+
     </LinearLayout>
 
 </LinearLayout>

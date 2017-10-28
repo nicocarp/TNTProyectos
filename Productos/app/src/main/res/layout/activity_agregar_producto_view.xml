@@ -63,22 +63,33 @@
             android:inputType="number"
             android:text="" />
 
-        <EditText
-            android:id="@+id/txtImagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:ems="10"
-            android:hint="Imagen"
-            android:inputType="textPersonName"
-            android:text="" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnSacarImagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Eliminar" />
+
+            <Button
+                android:id="@+id/btnSeleccionarImagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Imagen" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/imagenProducto"
             android:layout_width="200px"
             android:layout_height="200px"
             android:layout_weight="1"
-
             />
 
         <Button

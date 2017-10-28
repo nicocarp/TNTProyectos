@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -43,9 +44,9 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
     @BindView(R.id.txtDescripcion) EditText txtDescripcion;
     @BindView(R.id.txtPrecio) EditText txtPrecio;
     @BindView(R.id.txtStock) EditText txtStock;
-    @BindView(R.id.txtImagen) EditText txtImagen;
-    @BindView(R.id.imagenProducto)
-    ImageView imagenProducto;
+    @BindView(R.id.imagenProducto) ImageView imagenProducto;
+    @BindView(R.id.btnSacarImagen) Button btnSacarImagen;
+    @BindView(R.id.btnSeleccionarImagen)Button btnSeleccionarImagen;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +65,22 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
 
     public void inicarView(){
 
+        btnSacarImagen.setEnabled(false);
         // Reglas de validacion
-        validator.addValidation(txtCodigo, "[a-zA-Z\\s]+", "Ingrese codigo valido");
+        validator.addValidation(txtCodigo, "[a-zA-Z\\s]+", "Solo letras");
         validator.addValidation(txtNombre, RegexTemplate.NOT_EMPTY, "Requerido");
-        validator.addValidation(txtNombre, "[a-zA-Z\\s]+", "Ingrese nombre");
+        validator.addValidation(txtNombre, "[a-zA-Z\\s]+", "Solo letras");
         validator.addValidation(txtDescripcion, RegexTemplate.NOT_EMPTY, "Ingrese descripcion");
         validator.addValidation(txtPrecio, Range.greaterThan(0.0f), "Precio mayor a 0");
         validator.addValidation(txtPrecio, RegexTemplate.NOT_EMPTY, "Precio requerido");
         validator.addValidation(txtStock, Range.greaterThan(-1), "Stock 0 o mayor");
     }
 
-    @OnClick(R.id.imagenProducto) void seleccionarImagen(){
+    @OnClick(R.id.btnSacarImagen) void sacarImagen(){
+        imagenProducto.setImageDrawable(null);
+        btnSacarImagen.setEnabled(false);
+    }
+    @OnClick(R.id.btnSeleccionarImagen) void seleccionarImagen(){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, 1);
     }
@@ -108,38 +114,10 @@ public class AgregarProductoView extends AppCompatActivity implements IProducto.
                 Bundle extras = data.getExtras();
                 Bitmap bMap = (Bitmap) extras.get("data");
                 imagenProducto.setImageBitmap(bMap);
+                btnSacarImagen.setEnabled(true);
             }
         }
     }
-
-    public String saveImage(){
-        FileOutputStream fileOutputStream = null;
-        File file = getDisc();
-        if (!file.exists() && !file.mkdir()){
-            mostrarError("No se puede abrir archivo para escribir");
-            return "";
-        }
-        SimpleDateFormat format = new SimpleDateFormat("yyyymmsshhmmss");
-        String date = format.format(new Date());
-        String name = "img"+date+".jpg";
-        String file_name = file.getAbsolutePath()+File.separator+name;
-        File new_file = new File(file_name);
-        try {
-            fileOutputStream = new FileOutputStream(new_file);
-            Bitmap bmap= ((BitmapDrawable)imagenProducto.getDrawable()).getBitmap();
-            bmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return "";
-        }
-        return name;
-    }
-
-    public File getDisc(){
-        File file = android.os.Environment.getExternalStorageDirectory();
-        return new File(file, "imagenes");
-    }
-
     @Override
     public void mostrarError(String error) {
         Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT).show();

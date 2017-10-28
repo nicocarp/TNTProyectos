@@ -68,8 +68,11 @@ public class ListaVentasAdapter extends BaseAdapter{
             view_img_producto.setImageURI(Uri.fromFile(file_image));
 
         // view_img_producto.setImageDrawable(p.getImagen()); ARREGLAR LO DE IMAGEN
-        view_txt_fechaVenta.setText(venta.getFechaString());
-        view_txt_monto.setText("$"+venta.getMonto_total().toString());
+
+        String d = venta.getCantidad()+"u de "+venta.getProducto().getNombre();
+        String detalle = venta.getFechaString() + " $"+venta.getMonto_total();
+        view_txt_fechaVenta.setText(d);
+        view_txt_monto.setText(detalle);
 
         return v;
     }
