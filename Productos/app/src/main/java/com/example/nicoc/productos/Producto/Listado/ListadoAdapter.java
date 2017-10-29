@@ -72,8 +72,8 @@ public class ListadoAdapter extends BaseAdapter  {
         File file_image = new ManagerFile().getFileImagenByName(p.getImagen());
         if (file_image != null)
             imagenProducto.setImageURI(Uri.fromFile(file_image));
-        txtNombre.setText(p.getNombre());
-        txtCodigo.setText(p.getCodigo());
+        txtNombre.setText(p.getNombre()+" Stock: "+p.getStock());
+        txtCodigo.setText("Cod: "+ p.getCodigo());
 
         return v;
     }

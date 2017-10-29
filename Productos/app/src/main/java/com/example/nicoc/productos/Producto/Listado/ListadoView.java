@@ -1,8 +1,11 @@
 package com.example.nicoc.productos.Producto.Listado;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
+import butterknife.OnItemLongClick;
 import butterknife.OnTextChanged;
 
 public class ListadoView extends AppCompatActivity implements IListado.View {
@@ -70,6 +74,33 @@ public class ListadoView extends AppCompatActivity implements IListado.View {
         presenter.lanzarProductoDetalle(producto);
     }
 
+    @OnItemLongClick(R.id.listaProductos) boolean itemLongClick(int position){
+        final EditText txtNuevoStock = new EditText(this);
+        txtNuevoStock.setInputType(InputType.TYPE_CLASS_NUMBER);
+        final Producto p = (Producto)listaProductos.getAdapter().getItem(position);
+        new AlertDialog.Builder(this)
+                .setTitle("Actualizacion de stock")
+                .setMessage("Ingrese nuevo stock")
+                .setView(txtNuevoStock)
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Integer stock =Integer.valueOf(txtNuevoStock.getText().toString());
+                        actualizarStock(p, stock);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+        return true;
+    }
+    private void actualizarStock(Producto p , Integer cantidad){
+        this.presenter.actualizarStock(p, cantidad);
+        this.getItems();
+
+    }
     @Override
     public void getItems() {
         this.presenter.getItems();

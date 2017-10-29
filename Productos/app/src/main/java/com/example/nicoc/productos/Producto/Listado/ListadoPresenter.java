@@ -27,6 +27,15 @@ public class ListadoPresenter implements IListado.Presenter{
     }
 
     @Override
+    public void actualizarStock(Producto p, Integer cantidad) {
+        if (cantidad < 0)
+            this.view.mostrarError("Cantidad negativa");
+        p.setStock(cantidad);
+        this.model.actualizarProducto(p);
+        this.view.mostrarError("Stock acutlizado con exito");
+    }
+
+    @Override
     public void lanzarProductoDetalle(Producto producto) {
         this.view.lanzarDetalleProducto(producto);
     }

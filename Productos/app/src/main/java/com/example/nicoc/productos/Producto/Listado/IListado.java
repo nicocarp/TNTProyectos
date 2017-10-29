@@ -20,9 +20,12 @@ public interface IListado {
         public void getItems();
         public void mostrarError(String error);
         public void setItems(List<Producto> items);
+        public void actualizarStock(Producto p , Integer cantidad);
         public void lanzarProductoDetalle(Producto producto);
+
     }
     interface Model {
         public void getProductos();
+        public void actualizarProducto(Producto p);
     }
 }

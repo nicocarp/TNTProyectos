@@ -28,4 +28,14 @@ public class ListadoModel implements IListado.Model {
             this.presenter.mostrarError("Sin productos");
     }
 
+    @Override
+    public void actualizarProducto(Producto p) {
+        try {
+            this.manager.updateProducto(p);
+        }catch (Exception e){
+            this.presenter.mostrarError("Ocurrio un error al actualizar el producto");
+        }
+
+    }
+
 }
