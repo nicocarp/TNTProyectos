@@ -1,0 +1,1 @@
+docker run -d -p 8100:8100 -v /home/nicoc/Escritorio/codigos/TNT/proyectos/ionic/scrap-guarani/:/code imagen_ionic
