@@ -8,12 +8,14 @@ RUN npm install -g cordova ionic
 RUN npm install -g bower
 RUN npm install -g gulp
 
-WORKDIR /code
+#RUN useradd -ms /bin/bash user
+#RUN chown -R user:user /code
 
 RUN npm install
+# UID en contenedor igual al UID fuera.
+USER 1000 
 
-EXPOSE 8100
+EXPOSE 8100 35729
 
-#ENTRYPOINT ["ionic"]
 CMD ["ionic", "serve", "--address", "0.0.0.0"]
 
